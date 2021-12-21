@@ -1,5 +1,6 @@
 from box_packing import db
 
+
 # engine = create_engine('sqlite+pysqlite:///moving.db', echo=True, future=True)
 
 
@@ -16,6 +17,8 @@ class Box(db.Model):
     liquid = db.Column('liquid', db.Boolean, default=False)
     valuable = db.Column('valuable', db.Boolean, default=False)
     weather_resistant = db.Column('weather_resistant', db.Boolean, default=False)
+    can_freeze = db.Column('can_freeze', db.Boolean, default=False)
+    essential = db.Column('essential', db.Boolean, default=False)
 
     items = db.relationship('Item', back_populates='boxes')
 

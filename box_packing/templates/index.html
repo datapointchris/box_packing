@@ -1,27 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Box Packing</title>
 </head>
+
 <body>
-    <div id="form">
-        <h1>Daily Habits</h1>
-        <form method="POST" action="index.html">
-            <fieldset class="form-field">
-                {{ form.green_tea.label }}
-                {{ form.green_tea }}
-            </fieldset>
-  
-            <fieldset class="form-field">
-                {{ form.portion_control }}
-                {{ form.portion_control }}
-            </fieldset> 
-            {{ form.submit }}
-  
-        </form>
-      </div>
+    <div id="container">
+        <table>
+            <tr>
+                <td>
+                    <h1>All Boxes</h1>
+                    {% for box in boxes %}
+                    Box {{ box.id }}: {{ box.name }}<br />
+                    Size: {{ box.size }}<br /><br />
+                    {% endfor %}
+                </td>
+                <td>
+                    <form method="POST" action="{{ url_for('index') }}">
+                        <label for="single_box_id">Box ID to Get</label>
+                        <select name="single_box_id" id="single_box_id">
+                            {% for box in boxes %}
+                            <option value={{ box.id }}>Box {{ box.id }}: {{ box.name }}
+                            </option>
+                            {% endfor %}
+                        </select>
+                        <input type="submit" value="Get Box">
+                    </form>
+                    <h1>{{ single_box.name }}</h1>
+                    <ul>
+                        <li>Size: {{ single_box.size }}</li>
+                        <li>Essential: {{ single_box.essential }}</li>
+                        <li>Fragile: {{ single_box.fragile }}</li>
+                        <li>Liquid: {{ single_box.liquid }}</li>
+                        <li>Valuable: {{ single_box.valuable }}</li>
+                        <li>Weather Resistant: {{ single_box.weather_resistant }}</li>
+                        <li>Can Freeze: {{ single_box.can_freeze }}</li>
+                        <li>Length: {{ single_box.length }}</li>
+                        <li>Width: {{ single_box.width }}</li>
+                        <li>Height: {{ single_box.height }}</li>
+                </td>
+                <td>
+                    <h1> Box Functions</h1>
+                </td>
+            </tr>
+        </table>
+    </div>
 </body>
+
 </html>
