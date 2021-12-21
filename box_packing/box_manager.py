@@ -18,8 +18,16 @@ class BoxManager:
                 sql = f.read()
                 cursor.executescript(sql)
 
-    def get_all_boxes(self):
-        rows = self._execute('select * from boxes').fetchall()
+    def get_all_boxes(self, sort_1=None, sort_2=None):
+        query = 'select * from boxes'
+        if sort_1:
+            query += f' order by {sort_1}'
+            if sort_1 != 'id':
+                query += ' desc'
+            if sort_2:
+                query += f', {sort_2} desc'
+            print(query)
+        rows = self._execute(query).fetchall()
         boxes = [dict(row) for row in rows]
         return boxes
 
@@ -96,3 +104,19 @@ class BoxManager:
         print(f'|{" "*(len(title) - 2)}|')
         print('-' * len(title))
         print()
+
+    def text_search(self, query_text):
+        query = f"select * from search_items where name MATCH '{query_text}'"
+        rows = self._execute(query).fetchall()
+        items = [dict(row) for row in rows]
+        return items
+
+    def get_box_id_mappings(self):
+        rows = self._execute('select id, name from boxes').fetchall()
+        results = [dict(row) for row in rows]
+        mapping = {}
+        for result in results:
+            id = result.get('id')
+            name = result.get('name')
+            mapping[id] = name
+        return mapping

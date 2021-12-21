@@ -1,8 +1,60 @@
 body {
     padding    : 15px;
+    padding-top: 0px;
+    margin-top : 0px;
     font-size  : x-large;
     font-family: Arial, Helvetica, sans-serif;
 }
+
+
+/////////////////////////
+/*     NAVIGATION     */
+///////////////////////
+
+#navtable {
+    display                      : table;
+    table-layout                 : fixed;
+    width                        : 90%;
+    height                       : 40px;
+    margin-bottom                : 30px;
+    margin-top                   : 0px;
+    margin-left                  : auto;
+    margin-right                 : auto;
+    padding-top                  : 15px;
+    padding-bottom               : 5px;
+    padding-left                 : 50px;
+    padding-right                : 50px;
+    // background-color          : #444;
+    border-bottom-right-radius   : 5em;
+    border-bottom-left-radius    : 5em;
+    font-size                    : 20px;
+    // font-weight               : bold;
+    text-decoration              : none;
+    color                        : #eee;
+    box-shadow                   :
+        0 5px 10px #646464,
+        0 -2px 2px #666,
+        rgba(0, 0, 0, 0.07) 0px 4px 4px,
+        inset 0 -10px 10px rgba(0, 0, 0, 0.5),
+        rgba(0, 0, 0, 0.07) 0px 16px 16px;
+
+    .navtab {
+        display   : table-cell;
+        text-align: center;
+        font-size : x-large;
+        width     : 50%;
+
+        a {
+            color: #eee;
+
+            &:hover {
+                text-decoration: none;
+            }
+        }
+    }
+}
+
+
 
 #left-column {
     width         : 30%;
@@ -110,11 +162,60 @@ body {
 }
 
 .box-item-table-list {
-    
+
     td {
-        margin: 0;
-        width: 33%;
+        margin        : 0;
+        width         : 33%;
         padding-bottom: 35px;
-        border-bottom: 1px dotted orange;
+        border-bottom : 1px dotted orange;
+    }
+}
+
+.box-sort {
+    margin-left : 15px;
+    margin-right: 15px;
+}
+
+
+//////////////////////////
+/*     SEARCH PAGE     */
+////////////////////////
+
+
+#searchbox {
+    width         : 75%;
+    margin        : auto;
+    margin-bottom : 0;
+    padding-bottom: 0;
+    text-align    : center;
+}
+
+#search-results {
+    width          : 80%;
+    margin         : auto;
+    margin-top     : 0;
+    padding-top    : 0;
+    border-collapse: collapse;
+}
+
+.search-header td {
+    border-bottom  : 5px dashed orange;
+    border-top     : 5px dashed orange;
+    padding-top    : 20px;
+    padding-bottom : 20px;
+    margin-bottom  : 15px;
+    font-size      : xx-large;
+    border-collapse: collapse;
+
+}
+
+.box-item-search-list {
+
+    td {
+        margin        : 0;
+        padding-top   : 35px;
+        padding-bottom: 35px;
+        border-bottom : 1px dotted orange;
+        border-bottom : 1px dotted orange;
     }
 }

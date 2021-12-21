@@ -20,11 +20,22 @@ for item in test_boxes.item_list:
     db.add_box_item(item)
 
 
+def convert_box_id_to_name(results, mapping):
+    for result in results:
+        id = result.get('box_id')
+        box = mapping.get(id)
+        result['box'] = box
+        del result['box_id']
+    return results
+
+
 @app.route('/', methods=['GET', 'POST'])
 def index():
     last_box_id = request.args.get('last_box_id')
-    boxes = db.get_all_boxes()
+    box_sort_1 = request.form.get('box_sort_1')
+    box_sort_2 = request.form.get('box_sort_2')
     box_id = last_box_id or request.form.get('selected_box_id', 1)
+    boxes = db.get_all_boxes(box_sort_1, box_sort_2)
     selected_box = db.get_box(box_id)
     selected_box_items = db.get_box_items(box_id)
     return render_template(
@@ -32,6 +43,18 @@ def index():
         boxes=boxes,
         selected_box=selected_box,
         selected_box_items=selected_box_items,
+    )
+
+
+@app.route('/search', methods=['GET', 'POST'])
+def search():
+    search_text = request.form.get('search_text')
+    search_results = db.text_search(search_text)
+    box_mapping = db.get_box_id_mappings()
+    results = convert_box_id_to_name(search_results, box_mapping)
+    return render_template(
+        'search.html',
+        results=results,
     )
 
 

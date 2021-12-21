@@ -136,7 +136,7 @@ item_list = [
     },
     {
         'box_id': 5,
-        'name': 'Do you want some more?',
+        'name': 'cords',
         "liquid": False,
         "warm": False,
         "essential": True,
@@ -164,7 +164,7 @@ item_list = [
     },
     {
         'box_id': 5,
-        'name': 'Do you want some more?',
+        'name': 'lamp',
         "liquid": False,
         "warm": False,
         "essential": True,
@@ -178,7 +178,7 @@ item_list = [
     },
     {
         'box_id': 2,
-        'name': 'Battery Backup',
+        'name': 'pills',
         "liquid": True,
         "warm": False,
         "essential": True,
@@ -206,7 +206,7 @@ item_list = [
     },
     {
         'box_id': 2,
-        'name': 'Do you want some more?',
+        'name': 'spoon',
         "liquid": False,
         "warm": False,
         "essential": True,
@@ -250,7 +250,7 @@ item_list = [
         'box_id': 2,
         'name': 'Battery Backup',
         "liquid": True,
-        "warm": False,
+        "warm": True,
         "essential": True,
     },
     {
@@ -264,7 +264,7 @@ item_list = [
         'box_id': 4,
         'name': 'Some cords that have a long name that messes it up',
         "liquid": True,
-        "warm": False,
+        "warm": True,
         "essential": False,
     },
     {
@@ -278,7 +278,7 @@ item_list = [
         'box_id': 1,
         'name': 'Do you want some more?',
         "liquid": False,
-        "warm": False,
+        "warm": True,
         "essential": True,
     },
     {

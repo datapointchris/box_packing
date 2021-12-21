@@ -10,10 +10,40 @@
 </head>
 
 <body>
+    <div id="navtable">
+        <span class="navtab"><a href="/">Pack Boxes</a></span>
+        <span class="navtab"><a href="/search">Search for Items</a></span>
+    </div>
+
     <div id="container">
         <table width='100%'>
             <tr>
                 <td id="left-column">
+                    <form method="POST" action="{{ url_for('index') }}">
+                        <select class="big-button box-sort" name="box_sort_1"
+                            id="box_sort_1">
+                            <option value="none" selected disabled hidden>Box Sort Order 1
+                            </option>
+                            <option value="id">ID (default)</option>
+                            <option value="size">Size</option>
+                            <option value="essential">Essential</option>
+                            <option value="warm">Warm</option>
+                            <option value="liquid">Liquid</option>
+                        </select>
+                        <select class="big-button box-sort" name="box_sort_2"
+                            id="box_sort_2">
+                            <option value="none" selected disabled hidden>Box Sort Order 2
+                            </option>
+                            <option value="">None</option>
+                            <option value="size">Size</option>
+                            <option value="essential">Essential</option>
+                            <option value="warm">Warm</option>
+                            <option value="liquid">Liquid</option>
+                        </select>
+                        <input class="big-button box-sort" type="submit"
+                            value="Sort Boxes">
+                    </form>
+                    <br /><br />
                     {% for box in boxes %}
                     <div class="box-list">
                         <h3>Box {{ box.id }}: {{ box.name }}</h3>
