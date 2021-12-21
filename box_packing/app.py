@@ -1,7 +1,8 @@
 from box_packing.box_manager import BoxManager
-from flask import request, render_template, make_response, redirect, url_for
+from flask import request, render_template, redirect, url_for
 import sqlite3
-from box_packing import test_boxes
+
+# from box_packing import test_boxes
 
 from flask import Flask
 
@@ -12,12 +13,14 @@ connection = sqlite3.connect('moving.db', check_same_thread=False)
 connection.row_factory = sqlite3.Row
 
 db = BoxManager(connection)
-db.reset_db()
-for box in test_boxes.box_list:
-    db.add_box(box)
+db.create_db()
 
-for item in test_boxes.item_list:
-    db.add_box_item(item)
+# db.reset_db()
+# for box in test_boxes.box_list:
+#     db.add_box(box)
+
+# for item in test_boxes.item_list:
+#     db.add_box_item(item)
 
 
 def convert_box_id_to_name(results, mapping):

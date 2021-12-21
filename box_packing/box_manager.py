@@ -11,6 +11,13 @@ class BoxManager:
                 cursor.execute(sql)
             return cursor
 
+    def create_db(self):
+        with self.connection as conn:
+            cursor = conn.cursor()
+            with open('create_db.sql', 'r') as f:
+                sql = f.read()
+                cursor.executescript(sql)
+
     def reset_db(self):
         with self.connection as conn:
             cursor = conn.cursor()
@@ -65,8 +72,7 @@ class BoxManager:
 
     def delete_item(self, box_id, item_id):
         item = self._execute(
-            f'''select * from items 
-            where box_id = {box_id} and id = {item_id}'''
+            f'''select * from items where box_id = {box_id} and id = {item_id}'''
         ).fetchone()
         if item:
             self._execute(f'delete from items where box_id = {box_id} and id = {item_id}')

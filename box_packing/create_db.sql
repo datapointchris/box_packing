@@ -1,11 +1,5 @@
 -- sqlite
 
-DROP table if exists boxes;
-
-DROP table if exists items;
-
-DROP table if exists search_items;
-
 CREATE TABLE IF NOT EXISTS boxes (
     id integer PRIMARY KEY NOT NULL,
     name TEXT NOT NULL,
