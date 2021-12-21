@@ -1,6 +1,3 @@
-from box_packing.boxes import default_boxes
-
-
 class BoxManager:
     def __init__(self, connection):
         self.connection = connection
@@ -42,9 +39,9 @@ class BoxManager:
     def add_box_item(self, item):
         self._execute(
             '''
-            insert into items(box_id, name, warm)
+            insert into items(box_id, name, essential, warm, liquid)
             values
-            (:box_id, :name, :warm);''',
+            (:box_id, :name, :essential, :warm, :liquid);''',
             params=item,
         )
 
