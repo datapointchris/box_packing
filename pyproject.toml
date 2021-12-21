@@ -8,8 +8,6 @@ license = "MIT"
 [tool.poetry.dependencies]
 python = "^3.8"
 Flask = "^2.0.2"
-Flask-SQLAlchemy = "^2.5.1"
-python-dotenv = "^0.19.2"
 ipykernel = "^6.6.0"
 
 [tool.poetry.dev-dependencies]

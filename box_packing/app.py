@@ -6,8 +6,7 @@ import sqlite3
 
 from flask import Flask
 
-app = Flask(__name__, instance_relative_config=False)
-app.config.from_object('config.Config')
+app = Flask(__name__)
 
 connection = sqlite3.connect('moving.db', check_same_thread=False)
 connection.row_factory = sqlite3.Row
@@ -49,7 +48,7 @@ def index():
     )
 
 
-@app.route('/search', methods=['GET', 'POST'])
+@app.route('/search/', methods=['GET', 'POST'])
 def search():
     search_text = request.form.get('search_text')
     search_results = db.text_search(search_text)
