@@ -1,3 +1,6 @@
+from flask import url_for
+
+
 class BoxManager:
     def __init__(self, connection):
         self.connection = connection
@@ -14,14 +17,14 @@ class BoxManager:
     def create_db(self):
         with self.connection as conn:
             cursor = conn.cursor()
-            with open('create_db.sql', 'r') as f:
+            with open(url_for('static', filename='sql/create_db.sql'), 'r') as f:
                 sql = f.read()
                 cursor.executescript(sql)
 
     def reset_db(self):
         with self.connection as conn:
             cursor = conn.cursor()
-            with open('reset_db.sql', 'r') as f:
+            with open(url_for('static', filename='sql/reset_db.sql'), 'r') as f:
                 sql = f.read()
                 cursor.executescript(sql)
 
