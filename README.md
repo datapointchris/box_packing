@@ -1,6 +1,4 @@
-Link when you find out
-Link:
-https://askubuntu.com/questions/767504/permissions-problems-with-var-www-html-and-my-own-home-directory-for-a-website
+# Apache Permissions
 
 ## Allow Apache access to the folders and the files
 sudo chgrp -R www-data /var/www
