@@ -12,6 +12,7 @@ db = BoxManager(connection)
 def create_app():
     app = Flask(__name__)
     app.config['SECRET_KEY'] = '1A37BbcCJh67'
+    app.config['APPLICATION_ROOT'] = '/moving'
 
     with app.app_context():
         from box_packing import routes
