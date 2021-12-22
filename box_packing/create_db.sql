@@ -29,19 +29,19 @@ CREATE VIRTUAL TABLE IF NOT EXISTS search_items USING FTS5(
     content_rowid='id'
 );
 
-CREATE TRIGGER item_insert AFTER INSERT ON items
+CREATE TRIGGER IF NOT EXISTS item_insert AFTER INSERT ON items
     BEGIN
         INSERT INTO search_items (rowid, name)
         VALUES (new.id, new.name);
     END;
 
-CREATE TRIGGER item_delete AFTER DELETE ON items
+CREATE TRIGGER IF NOT EXISTS item_delete AFTER DELETE ON items
     BEGIN
         INSERT INTO search_items (search_items, rowid, name)
         VALUES ('delete', old.id, old.name);
     END;
 
-CREATE TRIGGER item_update AFTER UPDATE ON items
+CREATE TRIGGER IF NOT EXISTS item_update AFTER UPDATE ON items
     BEGIN
         INSERT INTO search_items (search_items, rowid, name)
         VALUES ('delete', old.id, old.name);
