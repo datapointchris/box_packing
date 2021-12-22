@@ -16,3 +16,6 @@ with app.app_context():
 
 
 from box_packing import routes
+
+if __name__ == '__main__':
+    app.run(host='127.0.0.1', port=8000)
