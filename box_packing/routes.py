@@ -1,8 +1,6 @@
-from flask import request, render_template, redirect, url_for, Flask
+from flask import request, render_template, redirect, url_for
 
 from box_packing import app, db
-
-
 
 
 def convert_box_id_to_name(results, mapping):
