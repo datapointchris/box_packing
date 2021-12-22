@@ -14,12 +14,11 @@ class BoxManager:
                 cursor.execute(sql)
             return cursor
 
-    def create_db(self):
+    def run_sql_script(self, opened_file):
         with self.connection as conn:
             cursor = conn.cursor()
-            with open(url_for('static', filename='sql/create_db.sql'), 'r') as f:
-                sql = f.read()
-                cursor.executescript(sql)
+            sql = opened_file.read()
+            cursor.executescript(sql)
 
     def reset_db(self):
         with self.connection as conn:
