@@ -16,7 +16,7 @@ def create_app():
     with app.app_context():
         from box_packing import routes
 
-        with open('box_packing/static/sql/create_db.sql', 'r') as f:
+        with open(url_for('static', filename='sql/create_db.sql'), 'r') as f:
             db.run_sql_script(f)
 
     return app

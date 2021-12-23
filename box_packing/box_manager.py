@@ -35,7 +35,6 @@ class BoxManager:
                 query += ' desc'
             if sort_2:
                 query += f', {sort_2} desc'
-            print(query)
         rows = self._execute(query).fetchall()
         boxes = [dict(row) for row in rows]
         return boxes

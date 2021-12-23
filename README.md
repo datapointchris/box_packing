@@ -1,24 +1,15 @@
-# Apache Permissions
+# TODO
 
-## Allow Apache access to the folders and the files
-sudo chgrp -R www-data /var/www
-sudo find /var/www -type d -exec chmod g+rx {} +
-sudo find /var/www -type f -exec chmod g+r {} +
+- Use config parameters for dev vs production
+  - https://dlabs.ai/blog/how-to-spin-up-a-simple-flask-app-using-nginx-in-15-minutes-or-less/
 
-## Give web server write permissions to the folder and db file
-sudo chmod g+w /var/www/box_packing/box_packing
-sudo chmod g+w /var/www/box_packing/box_packing/moving.db
+- Set dev environment to use the same redirects
+  - https://gist.github.com/Larivact/1ee3bad0e53b2e2c4e40
 
-## Give owner read/write privileges to the folders and files
-sudo chown -R $USER /var/www
-sudo find /var/www -type d -exec chmod u+rwx {} +
-sudo find /var/www -type f -exec chmod u+rw {} +
+- Create login for apps
+  - https://hackersandslackers.app/flask-login-user-authentication/
 
-## Make sure every new file after is created with www-data as the access user
-sudo find /var/www -type d -exec chmod g+s {} +
-
-
-## SHORTCUT for the first 8 commands
-sudo chown -R ubuntu:www-data /var/www
-sudo find /var/www -type d -exec chmod 2750 {} \+
-sudo find /var/www -type f -exec chmod 640 {} \+
+- Create script to copy files in deploy to directories
+  - deploy.sh
+  - Use the examples from Hackers and Slackers
+    - https://github.com/hackersandslackers/flask-session-tutorial
