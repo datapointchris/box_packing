@@ -19,9 +19,9 @@ CREATE TABLE IF NOT EXISTS items (
     FOREIGN KEY (box_id) REFERENCES boxes(id)
 );
 
-INSERT OR IGNORE INTO boxes(name, size, essential, warm, liquid)
+INSERT OR IGNORE INTO boxes(id, name, size, essential, warm, liquid)
 VALUES
-('Computers', 'medium', 0, 1, 0);
+(1, 'Computers', 'medium', 0, 1, 0);
 
 CREATE VIRTUAL TABLE IF NOT EXISTS search_items USING FTS5(
     box_id UNINDEXED,
